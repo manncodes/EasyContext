@@ -6,4 +6,6 @@ slimpajama-per-source-length-upsample-131072/
 .deepspeed_env
 yaofu_data
 mistral_data
-mistral_data_1M
+mistral_data_1Measycontext.egg-info/
+.venv/
+__pycache__/
