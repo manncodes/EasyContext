@@ -1,0 +1,32 @@
+[project]
+name = "easycontext"
+version = "0.1.0"
+description = "Memory optimization and training recipes for long context language models"
+requires-python = ">=3.10"
+dependencies = [
+    "accelerate==0.28.0",
+    "datasets==2.18.0",
+    "evaluate==0.4.1",
+    "tqdm",
+    "einops",
+    "sentencepiece",
+    "scikit-learn",
+    "matplotlib",
+    "pandas",
+    "numpy",
+    "deepspeed==0.14.0",
+    "transformers==4.39.1",
+    "wandb",
+    "seaborn",
+    "pytest",
+    "packaging",
+    "ninja",
+    "yunchang==0.3.1",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["easy_context"]

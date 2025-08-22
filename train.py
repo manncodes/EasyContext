@@ -48,20 +48,34 @@ def main(args):
     accelerator.init_trackers(project_name=args.wandb, init_kwargs={"wandb":{"name":args.output_dir.split("/")[-1]}})
     accelerator.print(f"Total GPUS: {accelerator.num_processes}")
 
-    try:
-        train_dataset = load_dataset(args.dataset)
-    except:
+    if os.path.exists(args.dataset):
+        accelerator.print(f"Loading dataset from local path: {args.dataset}")
         train_dataset = load_from_disk(args.dataset)
+    else:
+        accelerator.print(f"Loading dataset from HuggingFace: {args.dataset}")
+        train_dataset = load_dataset(args.dataset)
     if isinstance(train_dataset, DatasetDict):
         train_dataset = train_dataset["train"]
 
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model,
-        device_map=accelerator.device,
-        torch_dtype=torch.bfloat16,
-        rope_theta=args.rope_theta,
-        _attn_implementation="flash_attention_2",
-    )
+    if os.path.exists(args.model):
+        accelerator.print(f"Loading model from local path: {args.model}")
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model,
+            device_map=accelerator.device,
+            torch_dtype=torch.bfloat16,
+            rope_theta=args.rope_theta,
+            _attn_implementation="flash_attention_2",
+            local_files_only=True,
+        )
+    else:
+        accelerator.print(f"Loading model from HuggingFace: {args.model}")
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model,
+            device_map=accelerator.device,
+            torch_dtype=torch.bfloat16,
+            rope_theta=args.rope_theta,
+            _attn_implementation="flash_attention_2",
+        )
 
     assert isinstance(
         model, (transformers.LlamaForCausalLM, transformers.MistralForCausalLM)
