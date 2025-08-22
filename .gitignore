@@ -1,11 +1,64 @@
+# Weights and Biases
 wandb/
-**__pycache__/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Training outputs
 output/
+checkpoints/
+logs/
+
+# Model artifacts
 Llama-2-7b-hf/
 slimpajama-per-source-length-upsample-131072/
+
+# DeepSpeed
 .deepspeed_env
-yaofu_data
-mistral_data
-mistral_data_1Measycontext.egg-info/
-.venv/
-__pycache__/
+
+# Data directories
+yaofu_data/
+mistral_data/
+mistral_data_1M/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Lock files
+uv.lock

@@ -1,9 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-easy_context/__init__.py
-easycontext.egg-info/PKG-INFO
-easycontext.egg-info/SOURCES.txt
-easycontext.egg-info/dependency_links.txt
-easycontext.egg-info/requires.txt
-easycontext.egg-info/top_level.txt
