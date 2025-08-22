@@ -15,7 +15,7 @@ dependencies = [
     "pandas",
     "numpy",
     "deepspeed==0.14.0",
-    "transformers==4.39.1",
+    "transformers>=4.44.0",
     "wandb",
     "seaborn",
     "pytest",
